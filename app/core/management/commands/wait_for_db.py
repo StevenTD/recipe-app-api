@@ -24,4 +24,4 @@ class Command(BaseCommand):
                 self.stdout.write('database unavailable, waitig 1 second...')
                 time.sleep(1)
 
-        self.stdout.write(self.style.SUCCESS('Database avilable!'))
+        self.stdout.write(self.style.SUCCESS('Database available!'))
