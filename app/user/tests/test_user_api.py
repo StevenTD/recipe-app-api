@@ -90,15 +90,15 @@ class PublicUserApiTests(TestCase):
         """Test return error if credentials is invalid."""
         create_user(email='test@example.com', password='goodpass')
 
-        payload = {'email': 'test@example.com', 'password': 'goodpass'}
-        res = self.client.pos(TOKEN_URL, payload)
+        payload = {'email': 'test@example.com', 'password': 'goodpas'}
+        res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_token_blank_password(self):
         """Test return error when password is balnk."""
-        payload = {'email': 'test@example.com','password': ''}
+        payload = {'email': 'test@example.com', 'password': ''}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
