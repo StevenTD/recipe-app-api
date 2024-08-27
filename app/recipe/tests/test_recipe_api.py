@@ -216,7 +216,7 @@ class PrivateRecipeAPITests(TestCase):
             exists = recipe.tags.filter(
                 name=tag['name'],
                 user=self.user,
-            ).exits()
+            ).exists()
             self.assertTrue(exists)
 
     def test_create_recipe_with_existing_tag(self):
@@ -236,7 +236,7 @@ class PrivateRecipeAPITests(TestCase):
         recipe = recipes[0]
         self.assertEqual(recipe.tags.count(), 2)
         self.assertIn(tag_indian, recipe.tags.all())
-        for tag in payload['tag']:
+        for tag in payload['tags']:
             exists = recipe.tags.filter(
                 name=tag['name'],
                 user=self.user,
