@@ -38,7 +38,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Create new recipe."""
         serializer.save(user=self.request.user)
 
-
+# Generic should be last.
 class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
                             mixins.UpdateModelMixin,
                             mixins.ListModelMixin,
@@ -53,7 +53,6 @@ class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
         return self.queryset.filter(user=self.request.user).order_by('-name')
 
 
-# Generic should be last.
 class TagViewSet(BaseRecipeAttrViewSet):
     """Manage tags in the database."""
     serializer_class = serializers.TagSerializer
