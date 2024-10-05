@@ -15,8 +15,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Test
+        run: docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+      - name: Linting
+        run: docker compose run --rm app sh -c "flake8"
       - name: Build Docker Image
-        run: docker-compose build  # Ensure the image is built with the correct tag
+        run: docker-compose build  # Build the Docker image
       - name: List Docker Images
         run: docker images  # Verify the image is built
       - name: Push Docker Image
