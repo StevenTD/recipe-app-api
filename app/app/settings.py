@@ -154,3 +154,8 @@ REST_FRAMEWORK = {
 SPECTACULAR_SETTINGS = {
     'COMPONENT_SPLIT_REQUEST': True,
 }
+
+
+ADMINS = [
+    ('Admin1', 'admin1@example.com'),
+]
