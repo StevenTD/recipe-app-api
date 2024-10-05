@@ -20,7 +20,7 @@ jobs:
       - name: Linting
         run: docker compose run --rm app sh -c "flake8"
       - name: Build Docker Image
-        run: docker-compose build  # Build the Docker image
+        run: docker compose build  # Build the Docker image
       - name: List Docker Images
         run: docker images  # Verify the image is built
       - name: Push Docker Image
