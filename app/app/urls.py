@@ -24,6 +24,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path(
         'api/docs/',
